@@ -39,6 +39,6 @@
 
 <?php if (is_single()): ?>
 <nav id="nav-below" class="pagination">
-	<div class="nav-previous"><a href="<?php echo esc_url( home_url( '/notepad/' ) ); ?>">&larr; Back to blog</a></div>
+	<div class="nav-previous"><a href="<?php echo esc_url( home_url( ) ); ?>">&larr; Back to blog</a></div>
 </nav><!-- #nav-below -->
 <?php endif ?>

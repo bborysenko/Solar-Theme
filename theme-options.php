@@ -45,7 +45,7 @@ function theme_options_do_page() {
 
 
 				<h3><?php _e( 'Twitter Username', 'wordpress-solar' ); ?></h3>
-				<input class="regular-text" type="text" name="solar_options[twitter_username]" value="<?php esc_attr_e( $options['twitter_username'] ); ?>" />
+				@<input class="regular-text" type="text" name="solar_options[twitter_username]" value="<?php esc_attr_e( $options['twitter_username'] ); ?>" />
 				<h3><?php _e( 'Github Username', 'wordpress-solar' ); ?></h3>
 				<input class="regular-text" type="text" name="solar_options[github_username]" value="<?php esc_attr_e( $options['github_username'] ); ?>" />
 				
@@ -55,10 +55,10 @@ function theme_options_do_page() {
 
 				<h3><?php _e( 'Biography', 'wordpress-solar' ); ?></h3>
 				<p>
-					<textarea id="solar_options[biography]" class="large-text" cols="50" rows="10" name="solar_options[biography]"><?php echo esc_textarea( $options['biography'] ); ?></textarea>
+					<textarea id="solar_options[biography]" class="large-text" cols="30" rows="10" style="height: 100px; width: 400px" name="solar_options[biography]"><?php echo esc_textarea( $options['biography'] ); ?></textarea>
 				</p>
 			
-				h3><?php _e( 'Location', 'wordpress-solar' ); ?></h3>
+				<h3><?php _e( 'Location', 'wordpress-solar' ); ?></h3>
 				<input class="regular-text" type="text" name="solar_options[location]" value="<?php esc_attr_e( $options['location'] ); ?>" />
 				
 				<h3><?php _e( 'Blog color', 'wordpress-solar' ); ?></h3>

@@ -66,7 +66,8 @@
   foreach ( $pages as $page ): ?>
 	<a href="<?php echo get_page_link( $page->ID ) ?>" title="<?php echo $page->post_title ?>"><?php echo $page->post_title ?></a>
 <?php endforeach; ?>
-			<a class="contact-us" href="mailto:work@gravityonmars.com"><i></i>Contact Us</a></li>
+			<a target="_blank" class="github" href="http://github.com/<?php echo $options['github_username'] ?>"><i></i>Github</a></li>
+			<a target="_blank"  class="contact-us" href="mailto:<?php echo $options['contact_email'] ?>"><i></i>Say hello</a></li>
 			
 		</nav>
 		<hgroup>
@@ -76,7 +77,7 @@
 
 			<div class="info">
 				<h2><?php echo $options['theme_username'] ?></h2>
-				<h4><?php echo $options['twitter_username'] ?></h4>
+				<h4><a href="http://twitter.com/<?php echo $options['twitter_username'] ?>" title="">@<?php echo $options['twitter_username'] ?></a></h4>
 				<p class="bio"><?php echo $options['biography'] ?></p>
 				<small><?php echo $options['location'] ?></small>
 			</div>
