@@ -71,7 +71,7 @@
 			<?php endif ?>
 
 			<?php if ($options['twitter_username']): ?>
-				<a href="http://twitter.com/<?php echo $options['twitter_username'] ?>" title="">@<?php echo $options['twitter_username'] ?></a>
+				<a target="_blank" href="http://twitter.com/<?php echo $options['twitter_username'] ?>" title="">@<?php echo $options['twitter_username'] ?></a>
 			<?php endif ?>
 
 			<?php if ($options['contact_email']): ?>
@@ -90,7 +90,6 @@
 					<h4><?php echo $options['theme_username'] ?></h4>
 				<?php endif ?>
 				<p class="bio"><?php echo $options['biography'] ?></p>
-				<small><?php echo $options['location'] ?></small>
 			</div>
 		</hgroup>
 		

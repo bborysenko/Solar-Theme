@@ -320,7 +320,8 @@ a.twitter-button {
   color: #999;
 }
 .wrap header .bio {
-  font-size: 13px;
+  font-size: 16px;
+  color: #999;
   margin: 10px 0;
 }
 .wrap header small {
