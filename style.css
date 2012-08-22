@@ -231,10 +231,7 @@ textarea {
 }
 input:valid,
 textarea:valid,
-input:invalid,
-textarea:invalid {
-  background-color: #f0dddd;
-}
+/*input:invalid, textarea:invalid { background-color: #f0dddd; }*/,
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -288,14 +285,14 @@ a.twitter-button {
   font-family: 'proxima-nova', sans-serif;
   font-weight: 400;
 }
-.wrap header {
+.wrap header.site-header {
   margin-bottom: 50px;
 }
-.wrap header hgroup {
+.wrap header.site-header hgroup {
   overflow: hidden;
   margin-top: 30px;
 }
-.wrap header h1#logo {
+.wrap header.site-header h1#logo {
   margin: 0 30px 0 0;
   display: block;
   display: inline-block;
@@ -304,85 +301,95 @@ a.twitter-button {
   height: 150px;
   float: left;
 }
-.wrap header h1#logo a {
-  background: #f00;
+.wrap header.site-header h1#logo a {
+  background: #f00 url("images/logo.png") center no-repeat;
   border-radius: 5px;
   height: 150px;
   text-indent: -10000em;
   display: block;
 }
-.wrap header h4 {
+.wrap header.site-header h2 {
+  font-size: 26px;
+  line-height: 26px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.wrap header.site-header h4 {
   margin: 0;
   text-transform: uppercase;
   font-size: 12px;
 }
-.wrap header h4 a {
+.wrap header.site-header h4 a {
   color: #999;
 }
-.wrap header .bio {
+.wrap header.site-header .bio {
   font-size: 16px;
   color: #999;
   margin: 10px 0;
 }
-.wrap header small {
+.wrap header.site-header small {
   font-size: 11px;
   font-weight: bold;
 }
-.wrap header h2 {
-  margin: 0;
-  padding: 0;
-}
-.wrap header .info {
+.wrap header.site-header .info {
   float: left;
   width: 320px;
   display: inline-block;
 }
-.wrap header nav a,
-.wrap header time a {
-  font-family: Monaco, 'Lucida Console', monospace;
-}
-.wrap header nav a {
+.wrap header.site-header nav a {
   text-decoration: none;
   color: #333;
   margin-right: 30px;
   font-size: 10px;
   font-weight: normal;
+  font-family: Monaco, 'Lucida Console', monospace;
 }
-.wrap article {
+.wrap article.post,
+.wrap article.page {
   position: relative;
   margin-bottom: 120px;
 /* Images */
 }
-.wrap article h2 {
+.wrap article.post h2,
+.wrap article.page h2 {
   margin: 0 0 30px 0;
 }
-.wrap article h2 a {
+.wrap article.post h2 a,
+.wrap article.page h2 a {
   color: #000;
   position: relative;
   display: block;
 }
-.wrap article h2 a:hover {
+.wrap article.post h2 a:hover,
+.wrap article.page h2 a:hover {
   color: #2a94ca;
 }
-.wrap article h2.link a .anchor {
+.wrap article.post h2.link a .anchor,
+.wrap article.page h2.link a .anchor {
   height: 14px;
   max-height: 100%;
   margin-top: -5px;
   margin-left: 6px;
   opacity: 0.3;
 }
-.wrap article h2.link a span {
+.wrap article.post h2.link a span,
+.wrap article.page h2.link a span {
   border-bottom: 1px solid #f1f1f1;
   display: inline-block;
 }
-.wrap article h2.link a:hover span {
+.wrap article.post h2.link a:hover span,
+.wrap article.page h2.link a:hover span {
   border-color: #ccc;
 }
-.wrap article h2.link a:hover .anchor {
+.wrap article.post h2.link a:hover .anchor,
+.wrap article.page h2.link a:hover .anchor {
   opacity: 1;
 }
-.wrap article time {
+.wrap article.post time,
+.wrap article.page time {
   position: absolute;
+  font-size: 12px;
   color: #999;
   top: 10px;
   text-transform: uppercase;
@@ -392,7 +399,8 @@ a.twitter-button {
   left: -188px;
   text-align: right;
 }
-.wrap article time i {
+.wrap article.post time i,
+.wrap article.page time i {
   float: right;
   background: #eee;
   border-radius: 100px;
@@ -401,57 +409,75 @@ a.twitter-button {
   margin-top: 4px;
   margin-left: 20px;
 }
-.wrap article p,
-.wrap article ul,
-.wrap article blockquote,
-.wrap article ol,
-.wrap article .prettify {
+.wrap article.post p,
+.wrap article.page p,
+.wrap article.post ul,
+.wrap article.page ul,
+.wrap article.post blockquote,
+.wrap article.page blockquote,
+.wrap article.post ol,
+.wrap article.page ol,
+.wrap article.post .prettify,
+.wrap article.page .prettify {
   margin: 20px 0;
 }
-.wrap article p,
-.wrap article ul li {
+.wrap article.post p,
+.wrap article.page p,
+.wrap article.post ul li,
+.wrap article.page ul li {
   line-height: 25px;
   font-size: 15px;
   color: #4d4d4d;
 }
-.wrap article ul,
-.wrap article ol {
+.wrap article.post ul,
+.wrap article.page ul,
+.wrap article.post ol,
+.wrap article.page ol {
   padding: 0;
   margin-left: 18px;
 }
-.wrap article ul {
+.wrap article.post ul,
+.wrap article.page ul {
   list-style: square;
 }
-.wrap article ul li {
+.wrap article.post ul li,
+.wrap article.page ul li {
   margin: 5px 0;
 }
-.wrap article blockquote {
+.wrap article.post blockquote,
+.wrap article.page blockquote {
   border-left: 8px solid #2acb5b;
   color: #666;
   padding: 0 0 0 20px;
 }
-.wrap article blockquote p:last-child {
+.wrap article.post blockquote p:last-child,
+.wrap article.page blockquote p:last-child {
   margin-bottom: 0;
 }
-.wrap article .entry-content a {
+.wrap article.post .entry-content a,
+.wrap article.page .entry-content a {
   font-weight: normal;
   color: #000;
   padding-bottom: 0px;
   border-bottom: 1px solid #ccc;
 }
-.wrap article .entry-content a.view {
+.wrap article.post .entry-content a.view,
+.wrap article.page .entry-content a.view {
   border: 0;
 }
-.wrap article .entry-content a:hover {
+.wrap article.post .entry-content a:hover,
+.wrap article.page .entry-content a:hover {
   color: #0084ca;
   border-color: transparent;
 }
-.wrap article img {
+.wrap article.post img,
+.wrap article.page img {
   max-width: 100%;
   height: auto;
   width: auto;
 }
-.wrap article .embed-container {
+.wrap article.post .embed-container,
+.wrap article.page .embed-container {
   position: relative;
   padding-bottom: 56.25%;
 /* 16/9 ratio */
@@ -461,9 +487,12 @@ a.twitter-button {
   overflow: hidden;
   margin-bottom: 30px;
 }
-.wrap article .embed-container iframe,
-.wrap article .embed-container object,
-.wrap article .embed-container embed {
+.wrap article.post .embed-container iframe,
+.wrap article.page .embed-container iframe,
+.wrap article.post .embed-container object,
+.wrap article.page .embed-container object,
+.wrap article.post .embed-container embed,
+.wrap article.page .embed-container embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -492,31 +521,8 @@ a.twitter-button {
 }
 /* =Comments
 -------------------------------------------------------------- */
-.comments {
-  border-top: 1px solid #e2e2e2;
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-.comments ol {
-  padding-top: 20px;
-}
-#comments {
-  clear: both;
-}
-#comments .navigation {
-  padding: 0 0 18px 0;
-}
-h3#comments-title,
-h3#reply-title {
-  color: #000;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-h2#comments-title {
-  padding: 0 0;
-  margin: 0;
+.comments-area h2 {
+  margin-top: 0;
 }
 ol.commentlist {
   list-style: none;
@@ -528,25 +534,12 @@ ol.commentlist li.comment {
   border-bottom: 1px solid #e7e7e7;
   line-height: 24px;
   margin: 0 0 24px 0;
-  padding: 0 0 24px 106px;
+  padding: 0 0 24px 60px;
   position: relative;
 }
 ol.commentlist li:last-child {
   border-bottom: none;
   margin-bottom: 0;
-}
-#comments .comment-body ul,
-#comments .comment-body ol {
-  margin-bottom: 18px;
-}
-#comments .comment-body p:last-child {
-  margin-bottom: 6px;
-}
-#comments .comment-body blockquote p:last-child {
-  margin-bottom: 24px;
-}
-.commentlist ol {
-  list-style: decimal;
 }
 .commentlist .avatar {
   position: absolute;
@@ -578,8 +571,6 @@ ol.commentlist li:last-child {
 .comment-meta a:hover {
   color: #ff4b33;
 }
-.commentlist .even,
-.commentlist .bypostauthor,
 .reply {
   font-size: 12px;
   padding: 0 0 24px 0;
@@ -628,7 +619,6 @@ input[type=submit] {
 }
 #respond {
   position: relative;
-  width: 500px;
 }
 #respond p {
   margin: 0;
@@ -720,7 +710,7 @@ ol.commentlist li.comment.byuser #respond .form-submit {
   margin-bottom: 50px;
 }
 #respond textarea {
-  width: 500px;
+  width: 96%;
   margin-bottom: 10px;
   padding: 2%;
 }
@@ -739,7 +729,8 @@ ol.commentlist li.comment.byuser #respond .form-submit {
   font-size: 14px;
   width: auto;
 }
-.form-allowed-tags {
+.form-allowed-tags,
+.comment-notes {
   display: none;
 }
 @media only screen and (min-width: 35em) {

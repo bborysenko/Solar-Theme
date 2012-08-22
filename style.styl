@@ -56,7 +56,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 textarea { overflow: auto; vertical-align: top; resize: vertical; }
 input:valid, textarea:valid {  }
-input:invalid, textarea:invalid { background-color: #f0dddd; }
+/*input:invalid, textarea:invalid { background-color: #f0dddd; }*/
 
 table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
@@ -85,25 +85,26 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 		font-weight: 400;
 
 
-	header
+
+	header.site-header
 		margin-bottom: 50px
 		hgroup{overflow: hidden; margin-top: 30px;}
 		h1#logo
 			margin: 0 30px 0 0; display: block; display: inline-block;  border-radius: 100px;width: 150px; height: 150px; float: left;
-			a{background:  red; border-radius: 5px; height: 150px; text-indent: -10000em; display: block;}
+			a{background:  red url('images/logo.png') center no-repeat; border-radius: 5px; height: 150px; text-indent: -10000em; display: block;}
+		h2{font-size: 26px; line-height: 26px; padding: 0; margin: 0; margin-bottom: 10px;}
 		h4
 			margin: 0; text-transform: uppercase; font-size: 12px;
 			a{color: #999;}
 		.bio{font-size: 16px; color: #999; margin: 10px 0;}
 		small{font-size: 11px; font-weight: bold;}
-		h2{margin: 0; padding: 0;}
 		.info{float: left; width: 320px;display: inline-block;}
-		nav a, time a{font-family: Monaco, 'Lucida Console', monospace;}
 		nav
 			a
-				text-decoration: none; color: #333; margin-right: 30px; font-size: 10px; font-weight: normal;
+				text-decoration: none; color: #333; margin-right: 30px; font-size: 10px; font-weight: normal; font-family: Monaco, 'Lucida Console', monospace;
 
-	article
+
+	article.post, article.page
 		position: relative; margin-bottom: 120px;
 		h2
 			margin: 0 0 30px 0;
@@ -118,7 +119,7 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 					.anchor{opacity: 1;}
 
 		time
-			position: absolute; color: #999; top: 10px; text-transform: uppercase; font-weight: 400; width: 140px; font-size: 10px; left: -188px; text-align: right;
+			position: absolute; font-size: 12px; color: #999; top: 10px; text-transform: uppercase; font-weight: 400; width: 140px; font-size: 10px; left: -188px; text-align: right;
 			i
 				float: right;
 				background: #eee;
@@ -159,26 +160,15 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 
 /* =Comments
 -------------------------------------------------------------- */
-.comments{ border-top: 1px solid #E2E2E2;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-.comments ol{padding-top:20px}
-#comments{clear:both}
 
-#comments .navigation{padding:0 0 18px 0}
-h3#comments-title, 
-h3#reply-title{color:#000; font-size:20px; font-weight:bold; margin-bottom:0}
-h2#comments-title{padding:0 0; margin: 0}
-ol.commentlist{list-style:none; margin:0; padding: 0; max-width: 500px; }
-ol.commentlist li.comment{border-bottom:1px solid #e7e7e7; line-height:24px;  margin:0 0 24px 0; padding:0 0 24px 106px; position:relative}
-ol.commentlist li:last-child{border-bottom:none; margin-bottom:0}
-#comments .comment-body ul, 
-#comments .comment-body ol{margin-bottom:18px}
-#comments .comment-body p:last-child{margin-bottom:6px}
-#comments .comment-body blockquote p:last-child{margin-bottom:24px}
-.commentlist ol{list-style:decimal}
+.comments-area
+	h2{margin-top: 0;}
+
+ol.commentlist
+	list-style:none; margin:0; padding: 0; max-width: 500px; 
+	li.comment{border-bottom:1px solid #e7e7e7; line-height:24px;  margin:0 0 24px 0; padding:0 0 24px 60px; position:relative}
+	li:last-child{border-bottom:none; margin-bottom:0}
+
 .commentlist .avatar{position:absolute; top:4px; left:0}
 .comment-author{font-weight: bold; font-size: 13px}
 .comment-author cite{color:#000; font-style:normal; font-weight:bold}
@@ -188,8 +178,6 @@ ol.commentlist li:last-child{border-bottom:none; margin-bottom:0}
 .comment-meta a:visited{color:#888; text-decoration:none}
 .comment-meta a:active, 
 .comment-meta a:hover{color:#ff4b33}
-.commentlist .even{}
-.commentlist .bypostauthor{}
 .reply{font-size:12px; padding:0 0 24px 0}
 .reply a, 
 a.comment-edit-link{color:#888}
@@ -205,7 +193,7 @@ a.comment-edit-link:hover{color:#ff4b33}
 #comments .pingback .url{font-size:13px; font-style:italic}
 
 input[type=submit]{color:#333}
-#respond{position:relative; width: 500px; }
+#respond{position:relative; }
 #respond p{margin:0}
 #respond .comment-notes{margin-bottom:1em}
 .form-allowed-tags{line-height:1em}
@@ -219,7 +207,6 @@ article a.comment-reply-link{font-size: 13px; text-decoration: none; font-weight
 #respond .comment-form-author label, #respond .comment-form-email label, #respond .comment-form-url label, #respond .comment-form-comment label{color:#888;  font-size:12px; width: 70px; display: inline-block;  }
 #respond .comment-form-comment label {padding: 0; text-align: left; }
 #respond input[type="text"]{margin-bottom:14px; padding:4px; margin-right:10px; border:0; border-bottom:1px solid #ccc}
-
 #respond input[type="text"]:focus{outline:0; border-color:#333}
 
 .comment-form-comment label{display: block;}
@@ -230,12 +217,12 @@ article a.comment-reply-link{font-size: 13px; text-decoration: none; font-weight
 ol.commentlist li.comment.byuser{margin-top: 30px}
 ol.commentlist li.comment.byuser #respond .form-submit{margin-left: 0}
 #respond #submit{margin:0 0 9px; background:black; border-radius:5px; padding:10px 20px; font-weight:bold; width:auto; border:0; color:white; margin-bottom:50px}
-#respond textarea{width: 500px; margin-bottom:10px; padding: 2%}
+#respond textarea{width: 96%; margin-bottom:10px; padding: 2%}
 #respond .form-allowed-tags{color:#888; font-size:12px; line-height:18px}
 #respond .form-allowed-tags code{font-size:11px}
 #respond .form-submit{margin:12px 0 0 0}
 #respond .form-submit input{font-size:14px; width:auto}
-.form-allowed-tags{display: none;}
+.form-allowed-tags, .comment-notes{display: none;}
 @media only screen and (min-width: 35em) {
   
 

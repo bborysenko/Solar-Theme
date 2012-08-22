@@ -27,6 +27,9 @@
 
 </article><!-- #post-## -->
 
+			<?php comments_template( '', true ); ?>
+
+
 <?php endwhile; // End the loop. Whew. ?>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>

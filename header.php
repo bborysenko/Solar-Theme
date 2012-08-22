@@ -81,7 +81,7 @@
 		</nav>
 		<hgroup>
 			<h1 id="logo" class="logo">
-				<a href="<?php echo esc_url( home_url( '/notepad/' ) ); ?>" class="logo"><?php echo bloginfo('title') ?></a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><?php echo bloginfo('title') ?></a>
 			</h1>
 
 			<div class="info">
