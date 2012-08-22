@@ -289,18 +289,23 @@ a.twitter-button {
   font-weight: 400;
 }
 .wrap header {
-  text-align: center;
   margin-bottom: 50px;
 }
+.wrap header hgroup {
+  overflow: hidden;
+  margin-top: 20px;
+}
 .wrap header h1#logo {
-  margin: 20px auto;
+  margin: 0 20px 0 0;
   display: block;
   border-radius: 100px;
   width: 150px;
   height: 150px;
+  float: left;
 }
 .wrap header h1#logo a {
-  background: url("http://gravityonmars.com/wp-content/themes/gom3/images/logo-gom.png") no-repeat;
+  background: #f00;
+  border-radius: 5px;
   height: 150px;
   text-indent: -10000em;
   display: block;
@@ -316,12 +321,12 @@ a.twitter-button {
 }
 .wrap header nav a,
 .wrap header time a {
-  font-family: Menlo, Monaco, 'Lucida Console', monospace;
+  font-family: Monaco, 'Lucida Console', monospace;
 }
 .wrap header nav a {
   text-decoration: none;
   color: #333;
-  margin: 0 10px;
+  margin-right: 30px;
   font-size: 10px;
   font-weight: normal;
 }

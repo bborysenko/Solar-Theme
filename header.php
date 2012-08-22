@@ -36,8 +36,21 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
+<?php
+
+	$options = get_option ( 'solar_options' ); 
+
+	echo $options['google_analytics'];
+
+	if( isset( $options['color'] ) && '' != $options['color'] )
+		$color = $options['color'];
+	else 
+		$color = '<?php echo $color ?>';
+
+?>
 
 <?php wp_head(); ?>
 </head>
@@ -56,11 +69,19 @@
 			<a class="contact-us" href="mailto:work@gravityonmars.com"><i></i>Contact Us</a></li>
 			
 		</nav>
+		<hgroup>
+			<h1 id="logo" class="logo">
+				<a href="<?php echo esc_url( home_url( '/notepad/' ) ); ?>" class="logo"><?php echo bloginfo('title') ?></a>
+			</h1>
+
+			<div class="info">
+				<h2><?php echo $options['theme_username'] ?></h2>
+				<h4><?php echo $options['twitter_username'] ?></h4>
+				<p class="bio"><?php echo $options['biography'] ?></p>
+				<small><?php echo $options['location'] ?></small>
+			</div>
+		</hgroup>
 		
-		<h1 id="logo">
-<a href="<?php echo esc_url( home_url( '/notepad/' ) ); ?>" class="logo">
-			<img class="screenshot " src="<?php bloginfo( 'stylesheet_directory' ); ?>/images/logo-gom.png" alt="" />
-		</a>
-		</h1>
+
 	</header><!-- #masthead .site-header -->
 

@@ -25,16 +25,16 @@ if ( ! function_exists( 'solar_setup' ) ):
  * @since solar 1.0
  */
 function solar_setup() {
-
+	
 	/**
 	 * Custom template tags for this theme.
 	 */
 	require( get_template_directory() . '/inc/template-tags.php' );
-
+	
 	/**
 	 * Custom functions that act independently of the theme templates
 	 */
-	//require( get_template_directory() . '/inc/tweaks.php' );
+	require_once ( get_stylesheet_directory() . '/theme-options.php' );
 
 	/**
 	 * Custom Theme Options
