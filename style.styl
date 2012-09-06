@@ -64,9 +64,10 @@ td { vertical-align: top; }
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
 html 
-	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased; font-family: "proxima-nova";
 
-a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 30px; height: 30px; position: fixed; right: 20px; top: 20px; display: block;}
+h1,h2,h3,h4,h5
+	font-family: "futura-pt";
 
 .wrap
 	border-left: 1px solid #f1f1f1;border-right: 1px solid #f1f1f1; width: 500px; padding: 20px 50px 0 50px; margin: auto; 
@@ -101,7 +102,7 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 		.info{float: left; width: 320px;display: inline-block;}
 		nav
 			a
-				text-decoration: none; color: #333; margin-right: 30px; font-size: 10px; font-weight: normal; font-family: Monaco, 'Lucida Console', monospace;
+				text-decoration: none; color: #333; margin-right: 30px; font-size: 11px; font-weight: normal; font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
 
 
 	article.post, article.page
@@ -119,7 +120,7 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 					.anchor{opacity: 1;}
 
 		time
-			position: absolute; font-size: 12px; color: #999; top: 10px; text-transform: uppercase; font-weight: 400; width: 140px; font-size: 10px; left: -188px; text-align: right;
+			position: absolute; font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace; font-size: 12px; color: #666; top: 10px; text-transform: uppercase; font-weight: 400; width: 140px; font-size: 10px; left: -188px; text-align: right;
 			i
 				float: right;
 				background: #eee;
@@ -148,6 +149,22 @@ a.twitter-button{background:  url('images/twitter-logo.png') no-repeat; width: 3
 		.embed-container iframe, 
 		.embed-container object, 
 		.embed-container embed{ position:absolute;  top:0;  left:0;  width:100%;  height:100%}
+
+		p < code {width: 100%; display: none;}
+		code, pre
+			border: none;
+			display: block;
+			border: 1px solid #d2d2d2;
+			background-color: #f8f8f8;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			margin-left: -50px;
+			font-size: 13px;
+			width: auto;
+			border-left: none;
+			border-right: none;
+			padding: 20px 50px;
+			width: 500px;
 		/* Images */
 
 	nav.pagination

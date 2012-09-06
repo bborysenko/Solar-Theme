@@ -247,15 +247,14 @@ td {
 }
 html {
   -webkit-font-smoothing: antialiased;
+  font-family: "proxima-nova";
 }
-a.twitter-button {
-  background: url("images/twitter-logo.png") no-repeat;
-  width: 30px;
-  height: 30px;
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  display: block;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "futura-pt";
 }
 .wrap {
   border-left: 1px solid #f1f1f1;
@@ -341,9 +340,9 @@ a.twitter-button {
   text-decoration: none;
   color: #333;
   margin-right: 30px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: normal;
-  font-family: Monaco, 'Lucida Console', monospace;
+  font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
 }
 .wrap article.post,
 .wrap article.page {
@@ -389,8 +388,9 @@ a.twitter-button {
 .wrap article.post time,
 .wrap article.page time {
   position: absolute;
+  font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
   font-size: 12px;
-  color: #999;
+  color: #666;
   top: 10px;
   text-transform: uppercase;
   font-weight: 400;
@@ -498,6 +498,29 @@ a.twitter-button {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.wrap article.post p < code,
+.wrap article.page p < code {
+  width: 100%;
+  display: none;
+}
+.wrap article.post code,
+.wrap article.page code,
+.wrap article.post pre,
+.wrap article.page pre {
+  border: none;
+  display: block;
+  border: 1px solid #d2d2d2;
+  background-color: #f8f8f8;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: -50px;
+  font-size: 13px;
+  width: auto;
+  border-left: none;
+  border-right: none;
+  padding: 20px 50px;
+  width: 500px;
 }
 .wrap nav.pagination {
   margin: 0 0 40px 0;
