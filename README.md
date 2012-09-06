@@ -7,7 +7,7 @@ Solar-Theme
 
 [View Demo][]
 
-  [View Demo]: http://wp-medium.themeskult.com/
+  [View Demo]: http://solar.themeskult.com/
   
 ## Installation
 1. Move the folder wp-content/themes/
