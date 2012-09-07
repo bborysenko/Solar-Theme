@@ -302,6 +302,7 @@ h5 {
 }
 .wrap header.site-header h1#logo a {
   background: #f00 url("images/logo.png") center no-repeat;
+  background-size: cover;
   border-radius: 5px;
   height: 150px;
   text-indent: -10000em;

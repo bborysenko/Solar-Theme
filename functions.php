@@ -39,7 +39,7 @@ function solar_setup() {
 	/**
 	 * Custom Theme Options
 	 */
-	//require( get_template_directory() . '/inc/theme-options/theme-options.php' );
+	require( get_template_directory() . '/inc/theme-options/theme-options.php' );
 
 	/**
 	 * Make theme available for translation

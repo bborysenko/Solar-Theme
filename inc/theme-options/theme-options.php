@@ -1,306 +1,94 @@
 <?php
-/**
- * solar Theme Options
- *
- * @package solar
- * @since solar 1.0
- */
 
-/**
- * Register the form setting for our solar_options array.
- *
- * This function is attached to the admin_init action hook.
- *
- * This call to register_setting() registers a validation callback, solar_theme_options_validate(),
- * which is used when the option is saved, to ensure that our option values are properly
- * formatted, and safe.
- *
- * @since solar 1.0
- */
-function solar_theme_options_init() {
-	register_setting(
-		'solar_options', // Options group, see settings_fields() call in solar_theme_options_render_page()
-		'solar_theme_options', // Database option, see solar_get_theme_options()
-		'solar_theme_options_validate' // The sanitization callback, see solar_theme_options_validate()
-	);
+add_action( 'admin_init', 'theme_options_init' );
+add_action( 'admin_menu', 'theme_options_add_page' );
 
-	// Register our settings field group
-	add_settings_section(
-		'general', // Unique identifier for the settings section
-		'', // Section title (we don't want one)
-		'__return_false', // Section callback (we don't want anything)
-		'theme_options' // Menu slug, used to uniquely identify the page; see solar_theme_options_add_page()
-	);
-
-	// Register our individual settings fields
-	add_settings_field(
-		'sample_checkbox', // Unique identifier for the field for this section
-		__( 'Sample Checkbox', 'solar' ), // Setting field label
-		'solar_settings_field_sample_checkbox', // Function that renders the settings field
-		'theme_options', // Menu slug, used to uniquely identify the page; see solar_theme_options_add_page()
-		'general' // Settings section. Same as the first argument in the add_settings_section() above
-	);
-
-	add_settings_field( 'sample_text_input', __( 'Sample Text Input', 'solar' ), 'solar_settings_field_sample_text_input', 'theme_options', 'general' );
-	add_settings_field( 'sample_select_options', __( 'Sample Select Options', 'solar' ), 'solar_settings_field_sample_select_options', 'theme_options', 'general' );
-	add_settings_field( 'sample_radio_buttons', __( 'Sample Radio Buttons', 'solar' ), 'solar_settings_field_sample_radio_buttons', 'theme_options', 'general' );
-	add_settings_field( 'sample_textarea', __( 'Sample Textarea', 'solar' ), 'solar_settings_field_sample_textarea', 'theme_options', 'general' );
-}
-add_action( 'admin_init', 'solar_theme_options_init' );
-
-/**
- * Change the capability required to save the 'solar_options' options group.
- *
- * @see solar_theme_options_init() First parameter to register_setting() is the name of the options group.
- * @see solar_theme_options_add_page() The edit_theme_options capability is used for viewing the page.
- *
- * @param string $capability The capability used for the page, which is manage_options by default.
- * @return string The capability to actually use.
- */
-function solar_option_page_capability( $capability ) {
-	return 'edit_theme_options';
-}
-add_filter( 'option_page_capability_solar_options', 'solar_option_page_capability' );
-
-/**
- * Add our theme options page to the admin menu.
- *
- * This function is attached to the admin_menu action hook.
- *
- * @since solar 1.0
- */
-function solar_theme_options_add_page() {
-	$theme_page = add_theme_page(
-		__( 'Theme Options', 'solar' ),   // Name of page
-		__( 'Theme Options', 'solar' ),   // Label in menu
-		'edit_theme_options',          // Capability required
-		'theme_options',               // Menu slug, used to uniquely identify the page
-		'solar_theme_options_render_page' // Function that renders the options page
-	);
-}
-add_action( 'admin_menu', 'solar_theme_options_add_page' );
-
-/**
- * Returns an array of sample select options registered for solar.
- *
- * @since solar 1.0
- */
-function solar_sample_select_options() {
-	$sample_select_options = array(
-		'0' => array(
-			'value' =>	'0',
-			'label' => __( 'Zero', 'solar' )
-		),
-		'1' => array(
-			'value' =>	'1',
-			'label' => __( 'One', 'solar' )
-		),
-		'2' => array(
-			'value' => '2',
-			'label' => __( 'Two', 'solar' )
-		),
-		'3' => array(
-			'value' => '3',
-			'label' => __( 'Three', 'solar' )
-		),
-		'4' => array(
-			'value' => '4',
-			'label' => __( 'Four', 'solar' )
-		),
-		'5' => array(
-			'value' => '5',
-			'label' => __( 'Five', 'solar' )
-		)
-	);
-
-	return apply_filters( 'solar_sample_select_options', $sample_select_options );
+function theme_options_init(){
+	register_setting( 'sample_options', 'solar_options' );
 }
 
-/**
- * Returns an array of sample radio options registered for solar.
- *
- * @since solar 1.0
- */
-function solar_sample_radio_buttons() {
-	$sample_radio_buttons = array(
-		'yes' => array(
-			'value' => 'yes',
-			'label' => __( 'Yes', 'solar' )
-		),
-		'no' => array(
-			'value' => 'no',
-			'label' => __( 'No', 'solar' )
-		),
-		'maybe' => array(
-			'value' => 'maybe',
-			'label' => __( 'Maybe', 'solar' )
-		)
-	);
-
-	return apply_filters( 'solar_sample_radio_buttons', $sample_radio_buttons );
+function theme_options_add_page() {
+	add_theme_page( __( 'solar Options', 'wordpress-solar' ), __( 'Solar Options', 'wordpress-solar' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
 }
 
-/**
- * Returns the options array for solar.
- *
- * @since solar 1.0
- */
-function solar_get_theme_options() {
-	$saved = (array) get_option( 'solar_theme_options' );
-	$defaults = array(
-		'sample_checkbox'       => 'off',
-		'sample_text_input'     => '',
-		'sample_select_options' => '',
-		'sample_radio_buttons'  => '',
-		'sample_textarea'       => '',
-	);
+function theme_options_do_page() {
+	global $select_options, $radio_options;
 
-	$defaults = apply_filters( 'solar_default_theme_options', $defaults );
+	if ( ! isset( $_REQUEST['settings-updated'] ) )
+		$_REQUEST['settings-updated'] = false;
 
-	$options = wp_parse_args( $saved, $defaults );
-	$options = array_intersect_key( $options, $defaults );
-
-	return $options;
-}
-
-/**
- * Renders the sample checkbox setting field.
- */
-function solar_settings_field_sample_checkbox() {
-	$options = solar_get_theme_options();
 	?>
-	<label for="sample-checkbox">
-		<input type="checkbox" name="solar_theme_options[sample_checkbox]" id="sample-checkbox" <?php checked( 'on', $options['sample_checkbox'] ); ?> />
-		<?php _e( 'A sample checkbox.', 'solar' ); ?>
-	</label>
-	<?php
-}
-
-/**
- * Renders the sample text input setting field.
- */
-function solar_settings_field_sample_text_input() {
-	$options = solar_get_theme_options();
-	?>
-	<input type="text" name="solar_theme_options[sample_text_input]" id="sample-text-input" value="<?php echo esc_attr( $options['sample_text_input'] ); ?>" />
-	<label class="description" for="sample-text-input"><?php _e( 'Sample text input', 'solar' ); ?></label>
-	<?php
-}
-
-/**
- * Renders the sample select options setting field.
- */
-function solar_settings_field_sample_select_options() {
-	$options = solar_get_theme_options();
-	?>
-	<select name="solar_theme_options[sample_select_options]" id="sample-select-options">
-		<?php
-			$selected = $options['sample_select_options'];
-			$p = '';
-			$r = '';
-
-			foreach ( solar_sample_select_options() as $option ) {
-				$label = $option['label'];
-				if ( $selected == $option['value'] ) // Make default first in list
-					$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
-				else
-					$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
-			}
-			echo $p . $r;
-		?>
-	</select>
-	<label class="description" for="sample_theme_options[selectinput]"><?php _e( 'Sample select input', 'solar' ); ?></label>
-	<?php
-}
-
-/**
- * Renders the radio options setting field.
- *
- * @since solar 1.0
- */
-function solar_settings_field_sample_radio_buttons() {
-	$options = solar_get_theme_options();
-
-	foreach ( solar_sample_radio_buttons() as $button ) {
-	?>
-	<div class="layout">
-		<label class="description">
-			<input type="radio" name="solar_theme_options[sample_radio_buttons]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['sample_radio_buttons'], $button['value'] ); ?> />
-			<?php echo $button['label']; ?>
-		</label>
-	</div>
-	<?php
-	}
-}
-
-/**
- * Renders the sample textarea setting field.
- */
-function solar_settings_field_sample_textarea() {
-	$options = solar_get_theme_options();
-	?>
-	<textarea class="large-text" type="text" name="solar_theme_options[sample_textarea]" id="sample-textarea" cols="50" rows="10" /><?php echo esc_textarea( $options['sample_textarea'] ); ?></textarea>
-	<label class="description" for="sample-textarea"><?php _e( 'Sample textarea', 'solar' ); ?></label>
-	<?php
-}
-
-/**
- * Renders the Theme Options administration screen.
- *
- * @since solar 1.0
- */
-function solar_theme_options_render_page() {
-	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$('#color_picker_color1').farbtastic('#color1');            
+		});
+	</script>
+	
 	<div class="wrap">
-		<?php screen_icon(); ?>
-		<?php $theme_name = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_current_theme(); ?>
-		<h2><?php printf( __( '%s Theme Options', 'solar' ), $theme_name ); ?></h2>
-		<?php settings_errors(); ?>
+		<?php screen_icon(); echo "<h2>" . wp_get_theme() .' ' . __( 'Options', 'wordpress-solar' ) . "</h2>"; ?>
+
+		<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
+		<div class="updated fade"><p><strong><?php _e( 'Options saved', 'wordpress-solar' ); ?></strong></p></div>
+		<?php endif; ?>
 
 		<form method="post" action="options.php">
-			<?php
-				settings_fields( 'solar_options' );
-				do_settings_sections( 'theme_options' );
-				submit_button();
+			<?php settings_fields( 'sample_options' ); ?>
+			<?php $options = get_option( 'solar_options' ); 
+				  if( ! is_null( $options['color'] ) && '' != $options['color'] )
+				  	$color = esc_attr( $options['color'] );
+				  else
+				  	$color = '#ff0000';
 			?>
+
+				<h3><?php _e( 'Your name', 'wordpress-solar' ); ?></h3>
+				<input class="regular-text" type="text" name="solar_options[theme_username]" value="<?php esc_attr_e( $options['theme_username'] ); ?>" />
+
+
+				<h3><?php _e( 'Twitter Username', 'wordpress-solar' ); ?></h3>
+				@<input class="regular-text" type="text" name="solar_options[twitter_username]" value="<?php esc_attr_e( $options['twitter_username'] ); ?>" />
+				<h3><?php _e( 'Github Username', 'wordpress-solar' ); ?></h3>
+				<input class="regular-text" type="text" name="solar_options[github_username]" value="<?php esc_attr_e( $options['github_username'] ); ?>" />
+				
+				<h3><?php _e( 'Contact Email', 'wordpress-solar' ); ?></h3>
+				<input class="regular-text" type="text" name="solar_options[contact_email]" value="<?php esc_attr_e( $options['contact_email'] ); ?>" />
+
+
+				<h3><?php _e( 'Biography', 'wordpress-solar' ); ?></h3>
+				<p>
+					<textarea id="solar_options[biography]" class="large-text" cols="30" rows="10" style="height: 100px; width: 400px" name="solar_options[biography]"><?php echo esc_textarea( $options['biography'] ); ?></textarea>
+				</p>
+			
+				<h3><?php _e( 'Location', 'wordpress-solar' ); ?></h3>
+				<input class="regular-text" type="text" name="solar_options[location]" value="<?php esc_attr_e( $options['location'] ); ?>" />
+				
+				<h3><?php _e( 'Blog color', 'wordpress-solar' ); ?></h3>
+				<p>
+					<div id="color_picker_color1"></div>
+					<input id="color1" class="regular-text" type="text" name="solar_options[color]" value="<?php echo $color; ?>" />
+				</p>
+				<h3><?php _e( 'Google Analytics // Typekit', 'wordpress-solar' ); ?></h3>
+				<p>
+					<textarea id="solar_options[google_analytics]" class="large-text" cols="50" rows="10" name="solar_options[google_analytics]"><?php echo esc_textarea( $options['google_analytics'] ); ?></textarea>
+				</p>
+			
+				<p class="submit">
+					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'wordpress-solar' ); ?>" />
+				</p>
+	
 		</form>
 	</div>
 	<?php
 }
 
-/**
- * Sanitize and validate form input. Accepts an array, return a sanitized array.
- *
- * @see solar_theme_options_init()
- * @todo set up Reset Options action
- *
- * @param array $input Unknown values.
- * @return array Sanitized theme options ready to be stored in the database.
- *
- * @since solar 1.0
- */
-function solar_theme_options_validate( $input ) {
-	$output = array();
+function theme_options_validate( $input ) {
 
-	// Checkboxes will only be present if checked.
-	if ( isset( $input['sample_checkbox'] ) )
-		$output['sample_checkbox'] = 'on';
+	global $select_options, $radio_options;
 
-	// The sample text input must be safe text with no HTML tags
-	if ( isset( $input['sample_text_input'] ) && ! empty( $input['sample_text_input'] ) )
-		$output['sample_text_input'] = wp_filter_nohtml_kses( $input['sample_text_input'] );
+	$input['color'] = wp_filter_nohtml_kses( $input['color'] );
 
-	// The sample select option must actually be in the array of select options
-	if ( isset( $input['sample_select_options'] ) && array_key_exists( $input['sample_select_options'], solar_sample_select_options() ) )
-		$output['sample_select_options'] = $input['sample_select_options'];
+	$input['google_analytics'] = $input['google_analytics'] ;
 
-	// The sample radio button value must be in our array of radio button values
-	if ( isset( $input['sample_radio_buttons'] ) && array_key_exists( $input['sample_radio_buttons'], solar_sample_radio_buttons() ) )
-		$output['sample_radio_buttons'] = $input['sample_radio_buttons'];
-
-	// The sample textarea must be safe text with the allowed tags for posts
-	if ( isset( $input['sample_textarea'] ) && ! empty( $input['sample_textarea'] ) )
-		$output['sample_textarea'] = wp_filter_post_kses( $input['sample_textarea'] );
-
-	return apply_filters( 'solar_theme_options_validate', $output, $input );
+	return $input;
 }
+
+?>
