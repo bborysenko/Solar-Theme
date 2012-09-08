@@ -345,40 +345,49 @@ h5 {
   font-weight: normal;
   font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
 }
-.wrap .content-blog article.status-publish {
+.wrap .content-blog article.post,
+.wrap .content-blog article.page {
   position: relative;
   margin-bottom: 120px;
 /* Images */
 }
-.wrap .content-blog article.status-publish h2 {
+.wrap .content-blog article.post h2,
+.wrap .content-blog article.page h2 {
   margin: 0 0 30px 0;
 }
-.wrap .content-blog article.status-publish h2 a {
+.wrap .content-blog article.post h2 a,
+.wrap .content-blog article.page h2 a {
   color: #000;
   position: relative;
   display: block;
 }
-.wrap .content-blog article.status-publish h2 a:hover {
+.wrap .content-blog article.post h2 a:hover,
+.wrap .content-blog article.page h2 a:hover {
   color: #2a94ca;
 }
-.wrap .content-blog article.status-publish h2.link a .anchor {
+.wrap .content-blog article.post h2.link a .anchor,
+.wrap .content-blog article.page h2.link a .anchor {
   height: 14px;
   max-height: 100%;
   margin-top: -5px;
   margin-left: 6px;
   opacity: 0.3;
 }
-.wrap .content-blog article.status-publish h2.link a span {
+.wrap .content-blog article.post h2.link a span,
+.wrap .content-blog article.page h2.link a span {
   border-bottom: 1px solid #f1f1f1;
   display: inline-block;
 }
-.wrap .content-blog article.status-publish h2.link a:hover span {
+.wrap .content-blog article.post h2.link a:hover span,
+.wrap .content-blog article.page h2.link a:hover span {
   border-color: #ccc;
 }
-.wrap .content-blog article.status-publish h2.link a:hover .anchor {
+.wrap .content-blog article.post h2.link a:hover .anchor,
+.wrap .content-blog article.page h2.link a:hover .anchor {
   opacity: 1;
 }
-.wrap .content-blog article.status-publish time {
+.wrap .content-blog article.post time,
+.wrap .content-blog article.page time {
   position: absolute;
   font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
   font-size: 12px;
@@ -391,7 +400,8 @@ h5 {
   left: -188px;
   text-align: right;
 }
-.wrap .content-blog article.status-publish time i {
+.wrap .content-blog article.post time i,
+.wrap .content-blog article.page time i {
   float: right;
   background: #eee;
   border-radius: 100px;
@@ -400,56 +410,74 @@ h5 {
   margin-top: 4px;
   margin-left: 20px;
 }
-.wrap .content-blog article.status-publish p,
-.wrap .content-blog article.status-publish ul,
-.wrap .content-blog article.status-publish blockquote,
-.wrap .content-blog article.status-publish ol,
-.wrap .content-blog article.status-publish .prettify {
+.wrap .content-blog article.post p,
+.wrap .content-blog article.page p,
+.wrap .content-blog article.post ul,
+.wrap .content-blog article.page ul,
+.wrap .content-blog article.post blockquote,
+.wrap .content-blog article.page blockquote,
+.wrap .content-blog article.post ol,
+.wrap .content-blog article.page ol,
+.wrap .content-blog article.post .prettify,
+.wrap .content-blog article.page .prettify {
   margin: 20px 0;
 }
-.wrap .content-blog article.status-publish p,
-.wrap .content-blog article.status-publish ul li {
+.wrap .content-blog article.post p,
+.wrap .content-blog article.page p,
+.wrap .content-blog article.post ul li,
+.wrap .content-blog article.page ul li {
   line-height: 25px;
   font-size: 15px;
   color: #4d4d4d;
 }
-.wrap .content-blog article.status-publish ul,
-.wrap .content-blog article.status-publish ol {
+.wrap .content-blog article.post ul,
+.wrap .content-blog article.page ul,
+.wrap .content-blog article.post ol,
+.wrap .content-blog article.page ol {
   padding: 0;
   margin-left: 18px;
 }
-.wrap .content-blog article.status-publish ul {
+.wrap .content-blog article.post ul,
+.wrap .content-blog article.page ul {
   list-style: square;
 }
-.wrap .content-blog article.status-publish ul li {
+.wrap .content-blog article.post ul li,
+.wrap .content-blog article.page ul li {
   margin: 5px 0;
 }
-.wrap .content-blog article.status-publish blockquote {
+.wrap .content-blog article.post blockquote,
+.wrap .content-blog article.page blockquote {
   border-left: 8px solid #2acb5b;
   color: #666;
   padding: 0 0 0 20px;
 }
-.wrap .content-blog article.status-publish blockquote p:last-child {
+.wrap .content-blog article.post blockquote p:last-child,
+.wrap .content-blog article.page blockquote p:last-child {
   margin-bottom: 0;
 }
-.wrap .content-blog article.status-publish .entry-content a {
+.wrap .content-blog article.post .entry-content a,
+.wrap .content-blog article.page .entry-content a {
   font-weight: normal;
   color: #000;
   padding-bottom: 0px;
   border-bottom: 1px solid #ccc;
 }
-.wrap .content-blog article.status-publish .entry-content a.view {
+.wrap .content-blog article.post .entry-content a.view,
+.wrap .content-blog article.page .entry-content a.view {
   border: 0;
 }
-.wrap .content-blog article.status-publish .entry-content a:hover {
+.wrap .content-blog article.post .entry-content a:hover,
+.wrap .content-blog article.page .entry-content a:hover {
   border-color: #333;
 }
-.wrap .content-blog article.status-publish img {
+.wrap .content-blog article.post img,
+.wrap .content-blog article.page img {
   max-width: 100%;
   height: auto;
   width: auto;
 }
-.wrap .content-blog article.status-publish .embed-container {
+.wrap .content-blog article.post .embed-container,
+.wrap .content-blog article.page .embed-container {
   position: relative;
   padding-bottom: 56.25%;
 /* 16/9 ratio */
@@ -459,21 +487,27 @@ h5 {
   overflow: hidden;
   margin-bottom: 30px;
 }
-.wrap .content-blog article.status-publish .embed-container iframe,
-.wrap .content-blog article.status-publish .embed-container object,
-.wrap .content-blog article.status-publish .embed-container embed {
+.wrap .content-blog article.post .embed-container iframe,
+.wrap .content-blog article.page .embed-container iframe,
+.wrap .content-blog article.post .embed-container object,
+.wrap .content-blog article.page .embed-container object,
+.wrap .content-blog article.post .embed-container embed,
+.wrap .content-blog article.page .embed-container embed {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.wrap .content-blog article.status-publish p < code {
+.wrap .content-blog article.post p < code,
+.wrap .content-blog article.page p < code {
   width: 100%;
   display: none;
 }
-.wrap .content-blog article.status-publish code,
-.wrap .content-blog article.status-publish pre {
+.wrap .content-blog article.post code,
+.wrap .content-blog article.page code,
+.wrap .content-blog article.post pre,
+.wrap .content-blog article.page pre {
   border: none;
   display: block;
   border: 1px solid #d2d2d2;

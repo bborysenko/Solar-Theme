@@ -36,17 +36,20 @@
 <style>
 .wrap .content-blog article blockquote, 
 .wrap .content-blog article .entry-content a:hover,
-.wrap a:hover
-{border-color: <?php echo $color ?>;}
+.wrap .content-blog article a:hover
+{border-color: <?php echo $color ?> !important;}
 
 .wrap .content-blog article h2 a:hover
-{ color: <?php echo $color ?>}
+{ color: <?php echo $color ?> !important}
+
+.wrap nav.pagination a:hover
+{background-color: <?php echo $color ?>;}
 
 <?php if($options['color']): ?>
-	.wrap header.site-header h1#logo a{background-color: <?php echo $options['color'] ?>;}
+	.wrap header.site-header h1#logo a{background-color: <?php echo $options['color'] ?> !important;}
 <?php endif; ?>
 <?php if (header_image()): ?>
-	.wrap header.site-header h1#logo a{background-image: url(<?php echo header_image() ?> );}
+	.wrap header.site-header h1#logo a{background-image: url(<?php echo header_image() ?> )  !important;}
 <?php endif ?>
 </style>
 
