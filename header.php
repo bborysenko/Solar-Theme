@@ -33,11 +33,15 @@
 ?>
 
 <?php wp_head(); ?>
-<?php if (header_image()): ?>
 <style>
+<?php if($options['color']): ?>
+	.wrap header.site-header h1#logo a{background-color: <?php echo $options['color'] ?>;}
+<?php endif; ?>
+<?php if (header_image()): ?>
 	.wrap header.site-header h1#logo a{background-image: url(<?php echo header_image() ?> );}
-</style>
 <?php endif ?>
+</style>
+
 </head>
 
 <body <?php body_class(); ?>>
