@@ -1,8 +1,8 @@
 <?php if ( ! have_posts() ) : ?>
 <div id="post-0" class="post error404 not-found">
-	<h1 class="entry-title"><?php _e( 'Not Found', 'twentyten' ); ?></h1>
+	<h1 class="entry-title"><?php _e( 'Not Found' ); ?></h1>
 	<div class="entry-content">
-		<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
+		<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.' ); ?></p>
 		<?php get_search_form(); ?>
 	</div><!-- .entry-content -->
 </div><!-- #post-0 -->
@@ -21,13 +21,15 @@
 	</time><!-- .entry-meta -->
 
 	<div class="entry-content">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
+		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>') ); ?>
+		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:'), 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
 </article><!-- #post-## -->
 
-			<?php comments_template( '', true ); ?>
+<?php if (!is_page()): ?>
+	<?php comments_template( '', true ); ?>
+<?php endif ?>
 
 
 <?php endwhile; // End the loop. Whew. ?>
@@ -35,8 +37,8 @@
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
 <nav id="nav-below" class="pagination">
-	<?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?>
-	<?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?>
+	<?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts' ) ); ?>
+	<?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>' ) ); ?>
 </nav><!-- #nav-below -->
 <?php endif; ?>
 
