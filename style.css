@@ -254,7 +254,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "futura-pt";
+  font-family: "futura-pt", "Helvetica Neue", "Arial";
 }
 .wrap {
   border-left: 1px solid #f1f1f1;
@@ -343,7 +343,7 @@ h5 {
   margin-right: 30px;
   font-size: 11px;
   font-weight: normal;
-  font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
+  font-family: "droid-sans-mono", Menlo, Monaco, 'Lucida Console', monospace;
 }
 .wrap .content-blog article.post,
 .wrap .content-blog article.page {
@@ -389,7 +389,7 @@ h5 {
 .wrap .content-blog article.post time,
 .wrap .content-blog article.page time {
   position: absolute;
-  font-family: "droid-sans-mono", Monaco, 'Lucida Console', monospace;
+  font-family: "droid-sans-mono", Menlo, Monaco, 'Lucida Console', monospace;
   font-size: 12px;
   color: #666;
   top: 10px;
