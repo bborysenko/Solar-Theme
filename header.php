@@ -36,13 +36,15 @@
 <style>
 .wrap .content-blog article blockquote, 
 .wrap .content-blog article .entry-content a:hover,
-.wrap .content-blog article a:hover
+.wrap .content-blog article a:hover,
+.wrap nav a:hover
 {border-color: <?php echo $color ?> !important;}
 
 .wrap .content-blog article h2 a:hover
 { color: <?php echo $color ?> !important}
 
-.wrap nav.pagination a:hover
+.wrap nav.pagination a:hover,
+#respond #submit
 {background-color: <?php echo $color ?>;}
 
 <?php if($options['color']): ?>
