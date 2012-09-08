@@ -34,6 +34,14 @@
 
 <?php wp_head(); ?>
 <style>
+.wrap .content-blog article blockquote, 
+.wrap .content-blog article .entry-content a:hover,
+.wrap a:hover
+{border-color: <?php echo $color ?>;}
+
+.wrap .content-blog article h2 a:hover
+{ color: <?php echo $color ?>}
+
 <?php if($options['color']): ?>
 	.wrap header.site-header h1#logo a{background-color: <?php echo $options['color'] ?>;}
 <?php endif; ?>
