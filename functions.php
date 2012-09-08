@@ -68,6 +68,8 @@ function solar_setup() {
 }
 endif; // solar_setup
 add_action( 'after_setup_theme', 'solar_setup' );
+add_action( 'load-post.php', 'wp_svbtle_post_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'wp_svbtle_post_meta_boxes_setup' );
 
 /**
  * Register widgetized area and update sidebar with default widgets
@@ -119,6 +121,51 @@ add_action( 'wp_enqueue_scripts', 'solar_scripts' );
 require( get_template_directory() . '/inc/custom-header.php' );
 
 
+function wp_svbtle_external_url( $object, $box ) { ?>
+	<?php wp_nonce_field( basename( __FILE__ ), '_wp_svbtle_external_url' ); ?>
+	<p>
+		<input class="widefat" type="text" name="wp_svbtle_external_url" id="wp_svbtle_external_url" value="<?php echo esc_attr( get_post_meta( $object->ID, '_wp_svbtle_external_url', true ) ); ?>" size="30" />
+	</p>
+<?php }
+
+
+function wp_svbtle_post_meta_boxes_setup() {
+	add_action( 'add_meta_boxes', 'wp_svbtle_add_post_meta_boxes' );
+	add_action( 'save_post', 'wp_svbtle_save_post_class_meta', 10, 2 );
+}
+
+function wp_svbtle_add_post_meta_boxes() {
+	add_meta_box(
+		'wp_svbtle_external_url', esc_html__( 'External Url', 'example' ),
+		'wp_svbtle_external_url',
+		'post',
+		'side',
+		'high'
+	);
+}
+
+function wp_svbtle_save_post_class_meta( $post_id, $post ) {
+
+	if ( !isset( $_POST['_wp_svbtle_external_url'] ) || !wp_verify_nonce( $_POST['_wp_svbtle_external_url'], basename( __FILE__ ) ) )
+		return $post_id;
+
+	$post_type = get_post_type_object( $post->post_type );
+
+	if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+		return $post_id;
+
+	$new_meta_value = ( isset( $_POST['wp_svbtle_external_url'] ) ? esc_url_raw( $_POST['wp_svbtle_external_url'] ) : '' );
+
+	$meta_key = '_wp_svbtle_external_url';
+	$meta_value = get_post_meta( $post_id, $meta_key, true );
+
+	if ( $new_meta_value && '' == $meta_value )
+		add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+	elseif ( $new_meta_value && $new_meta_value != $meta_value )
+		update_post_meta( $post_id, $meta_key, $new_meta_value );
+	elseif ( '' == $new_meta_value && $meta_value )
+		delete_post_meta( $post_id, $meta_key, $meta_value );
+}
 
 function print_post_title() {
 	
@@ -156,7 +203,7 @@ function print_post_title() {
 	if ($is_link): ?>
 		<h2 class="link">
 			<a href="<?php echo $link ?>" >
-				<?php echo the_title() ?>
+				<span><?php echo the_title() ?></span>
 				<img src="<?php echo get_bloginfo('stylesheet_directory') ?>/images/anchor.svg" class="anchor">
 			</a>
 		</h2>
