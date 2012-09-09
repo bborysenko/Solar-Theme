@@ -12,6 +12,7 @@
 </div>
 
 <?php wp_footer(); ?>
-
+<!-- You can not change or edit this <div class="copyright"> without buying the licence of this theme. To buy it, send 40$ to work@gravityonmars.com via Paypal. Thanks! -->
+<div class="copyright">Made by ThemesKult</div>
 </body>
 </html>
