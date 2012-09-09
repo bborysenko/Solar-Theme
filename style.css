@@ -544,6 +544,7 @@ h5 {
 }
 .copyright {
   position: fixed;
+  text-decoration: none;
   right: 20px;
   bottom: 10px;
   width: 100px;
